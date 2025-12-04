@@ -4,7 +4,7 @@ def limpiar_datos(df):
     if df.empty:
         print("El DataFrame esta vacio.")
     else:
-        # Primero transformar SEXO y EDAD (ANTES de convertir a numérico)
+        # Primero transformar SEXO y EDAD
         # Transformar H y M a 1 y 0 respectivamente en la columna "SEXO"
         df['SEXO'] = df['SEXO'].map({'H': 1, 'M': 0})
         print(f"Columna SEXO codificada: H->1, M->0")
@@ -70,7 +70,7 @@ def limpiar_datos(df):
         # Crear columna PAIS_CODIGO
         df['PAIS_CODIGO'] = df['PAIS'].map(pais_map)
         
-        # Verificar si hay países no mapeados
+        # Verificar si hay países no mapeados (por si a acaso)
         valores_pais_no_mapeados = df[df['PAIS_CODIGO'].isna()]['PAIS'].unique()
         if len(valores_pais_no_mapeados) > 0:
             print(f"\nPaíses no reconocidos: {valores_pais_no_mapeados}")
